@@ -2,6 +2,11 @@
     "name": "dsalato/pncc",
     "description": "Subject area: Library (reader counting)",
     "type": "project",
+    "require": {
+        "php": "^8.2",
+        "illuminate/database": "^11.0@dev",
+        "illuminate/events": "^11.0@dev"
+    },
     "license": "MIT",
     "authors": [
         {
@@ -9,15 +14,14 @@
             "email": "d.salato@mail.ru"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": "^7.4 | ^8.0"
-    },
     "autoload": {
         "psr-4": {
             "Src\\": "core/Src/",
             "": "app/"
         }
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "platform-check": false
     }
-
 }
