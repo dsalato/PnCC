@@ -5,4 +5,8 @@
         echo '<li>' . $post->title . '</li>';
     }
     ?>
+<<<<<<< HEAD
 </ol>
+=======
+</ol>
+>>>>>>> origin/master
