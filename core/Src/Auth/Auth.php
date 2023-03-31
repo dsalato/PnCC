@@ -20,6 +20,7 @@ class Auth
     {
         self::$user = $user;
         Session::set('id', self::$user->getId());
+        Session::set('role', self::$user->getRole());
     }
     //Аутентификация пользователя и вход по учетным данным
     public static function attempt(array $credentials): bool
@@ -36,10 +37,24 @@ class Auth
         $id = Session::get('id') ?? 0;
         return self::$user->findIdentity($id);
     }
+
+    public static function chRole()
+    {
+        $role = Session::get('role') ?? 0;
+        return $role;
+    }
     //Проверка является ли текущий пользователь аутентифицированным
     public static function check(): bool
     {
         if (self::user()) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function checkRole(): bool
+    {
+        if (self::chRole()) {
             return true;
         }
         return false;
