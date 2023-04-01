@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Model\Books;
 use Model\User;
 use Src\View;
 use Src\Request;

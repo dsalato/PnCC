@@ -11,7 +11,7 @@
 <header>
     <div class="container">
         <div class="header_inner">
-            <h1>Библиотека</h1>
+            <a href="<?= app()->route->getUrl('/books') ?>" ><h1>Библиотека</h1></a>
             <nav class="header_nav">
                 <?php
                 if (!app()->auth::check()):
@@ -26,11 +26,11 @@
                     <?php
                     else:
                     ?>
-                        <a class="header_a" href="#">Добавить читателя</a>
+                        <a class="header_a" href="<?= app()->route->getUrl('/addreader') ?>">Добавить читателя</a>
                     <?php
                     endif;
                     ?>
-                <a class="header_a" href="#">Читатели</a>
+                <a class="header_a" href="<?= app()->route->getUrl('/readers')?>">Читатели</a>
                 <a class="header_a" href="#">Добавить автора</a>
                 <a class="header_a" href="#">Добавить книгу</a>
                 <a class="header_a" href="<?= app()->route->getUrl('/logout')?>">Выход</a>
@@ -88,7 +88,10 @@
     .header_nav {
         display: flex;
     }
-
+    a{
+        text-decoration: none;
+        color: black;
+    }
     .header_a {
         text-decoration: none;
         margin: 0 20px;

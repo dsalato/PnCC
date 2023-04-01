@@ -14,6 +14,7 @@
                     <div class="div"></div>
                     <div class="books_content">
                         <p><?= $book->name ?></p>
+                        <p><?= $authors->first_name?> <?= $authors->last_name?></p>
                         <p><?= $book->year ?></p>
                         <p class="book_text"><?= $book->description ?></p>
                     </div>

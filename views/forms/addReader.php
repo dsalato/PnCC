@@ -31,10 +31,7 @@
                     <div class="form_item">
                         <label for="number">Номер</label>
                         <input id="number" name="number" type="number">
-
                     </div>
-
-
                     <button class="form_submit">Добавить</button>
                 </div>
             </form>

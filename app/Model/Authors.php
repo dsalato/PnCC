@@ -4,14 +4,15 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Authors extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public $table = 'authors';
+    public $table = 'Authors';
     protected $fillable = [
-        'author_id',
+        'id',
         'first_name',
         'last_name',
         'date_of_birth',
@@ -19,4 +20,14 @@ class Authors extends Model
         'biography',
         'photo'
     ];
+
+    public function connect():BelongsToMany
+    {
+        return $this->belongsToMany(
+            Authors::class,
+            'Connection',
+            'book_id',
+            'author_id',
+        );
+    }
 }

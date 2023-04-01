@@ -14,7 +14,12 @@ class Reader{
             app()->route->redirect('/books');
         }
         return new View('forms.addReader');
-
     }
 
+    public function readers (Request $request): string
+    {
+        $reader = Readers::all();
+        $date = Readers::find(9)->readBook;
+        return (new View())->render('site.readers', ['readers' => $reader, 'date' => $date]);
+    }
 }
