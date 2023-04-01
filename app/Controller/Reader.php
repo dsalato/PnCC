@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Books;
 use Model\Readers;
 use Src\View;
 use Src\Request;
@@ -19,7 +20,17 @@ class Reader{
     public function readers (Request $request): string
     {
         $reader = Readers::all();
+        $books = Books::all();
         $date = Readers::find(9)->readBook;
-        return (new View())->render('site.readers', ['readers' => $reader, 'date' => $date]);
+        return (new View())->render('site.readers', ['readers' => $reader, 'date' => $date, 'books' => $books,]);
+
     }
+    public function profileReader (Request $request): string
+    {
+        $reader = Readers::where('id', $request->id)->get();
+        $books = Books::all();
+        return (new View())->render('site.profileReader', ['readers' => $reader, 'books' => $books,]);
+
+    }
+
 }

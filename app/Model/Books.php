@@ -5,7 +5,7 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Books extends Model
 {
@@ -15,11 +15,18 @@ class Books extends Model
     protected $fillable = [
         'id',
         'name',
+        'author',
         'year',
         'description',
         'count',
         'photo',
     ];
+    protected static function booted()
+    {
+        static::created(function ($books) {
+            $books->save();
+        });
+    }
 
 }
 

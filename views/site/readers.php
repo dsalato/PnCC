@@ -2,15 +2,25 @@
     <div class="choice">
         <div class="container">
             <h3>Все читатели</h3>
-            <div class="choice_inner">
-                <select name="readers">
-                    <option value="Гордость и предубеждение">Нужны связи</option>
-                    <option value="Джейн Эйр">Нужны связи</option>
-                    <option value="Тихий Дон">Нужны связи</option>
-                    <option value="Война и мир">Нужны связи</option>
-                </select>
-                <p>Выбор книги</p>
-            </div>
+            <?php
+            if (app()->auth::check()):
+                ?>
+                <div class="choice_inner">
+
+                    <select name="readers">
+                        <?php
+                        foreach ($books as $book) {
+                            ?>
+                            <option value="<?= $book->name?>"><?= $book->name?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                    <p>Выбор книги</p>
+                </div>
+            <?php
+            endif;
+            ?>
         </div>
     </div>
 
@@ -20,7 +30,7 @@
                 <?php
                 foreach ($readers as $reader) {
                 ?>
-                <div class="book">
+                <a href="<?= app()->route->getUrl('/profile') ?>"><div class="book">
                     <div class="books_content">
                         <p><?= $reader->first_name ?> <?= $reader->last_name ?></p>
                         <p>Номер читательского билета: <?= $reader->id ?></p>
@@ -30,7 +40,7 @@
                         <p>Дата выдачи <?= $date[0]->date_of_issue ?></p>
                         <p>Дата сдачи <?= $date[0]->delivery_date ?></p>
                     </div>
-                </div>
+                </div></a>
                     <?php
                 }
                 ?>

@@ -1,6 +1,26 @@
 <div class="choice">
     <div class="container">
         <h3>Все книги</h3>
+        <?php
+        if (app()->auth::check()):
+            ?>
+            <div class="choice_inner">
+
+                <select name="readers">
+                    <?php
+                    foreach ($readers as $reader) {
+                    ?>
+                    <option value="<?= $reader->last_name?>"><?= $reader->last_name?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+
+                <p>Выбор читателя</p>
+            </div>
+        <?php
+        endif;
+        ?>
     </div>
 </div>
 
@@ -14,7 +34,7 @@
                     <div class="div"></div>
                     <div class="books_content">
                         <p><?= $book->name ?></p>
-                        <p><?= $authors->first_name?> <?= $authors->last_name?></p>
+                        <p><?= $book->author ?></p>
                         <p><?= $book->year ?></p>
                         <p class="book_text"><?= $book->description ?></p>
                     </div>
@@ -33,16 +53,20 @@
         border: 2px solid black;
     }
 
-    .choice {
+    .choice{
         margin: 30px 0;
     }
-
-    h3 {
+    h3{
         text-align: center;
         text-transform: uppercase;
     }
-
-    select {
+    .choice_inner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
+    select{
         margin-right: 40px;
     }
 
