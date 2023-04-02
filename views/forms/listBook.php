@@ -6,21 +6,139 @@
     </div>
     <div class="forms">
         <div class="container">
-            <form  method="post">
+            <form method="post">
                 <div class="form_inner">
 
                     <div class="form_item">
-                        <label for="username">Читательский билет<input id="username" type="text"></label>
+                        <label for="username">Читательский билет<input id="username" name="id_read" type="text"></label>
                     </div>
 
 
                     <button class="form_submit">Ввести</button>
                 </div>
             </form>
+
+
+        </div>
+    </div>
+    <div class="books">
+        <div class="container">
+            <div class="books_inner">
+                <?php
+                if ($request->method === 'POST' && isset($readers[0])):{
+                    ?>
+                    <h3><?= $readers[0]->first_name ?> <?= $readers[0]->last_name ?></h3>
+
+                    <?php
+                    if (!isset($readers[0]->readBook[0])):
+                        ?>
+
+                        <h3>У читателя нет книг</h3>
+                    <?php
+                    else:{
+                        foreach ($readers[0]->readBook as $book) {
+                            ?>
+
+                            <div class="books_item">
+
+                                <div class="div"></div>
+                                <div class="books_content">
+                                    <p><?= $book->book->name ?></p>
+                                    <p><?= $book->book->author ?></p>
+                                    <p><?= $book->book->year ?></p>
+                                    <p class="book_text"><?= $book->book->description ?></p>
+                                    <p class="book_data">Дата выдачи : <?= $book->date_of_issue ?></p>
+                                    <p class="book_data">Дата сдачи : <?= $book->delivery_date ?></p>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    endif;
+                } elseif ($request->method === 'POST'):
+                    ?>
+                    <p>Такого читателя не существует</p>
+
+                <?php
+                endif;
+                ?>
+            </div>
         </div>
     </div>
 </main>
 <style>
+    .choice {
+        margin: 30px 0;
+    }
+
+    h3 {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .choice_inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+    }
+
+    select {
+        margin-right: 40px;
+    }
+
+    form {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .form_inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 200px;
+        margin-bottom: 100px;
+
+    }
+
+    .form_item {
+        margin: 10px 0 0 30px;
+    }
+
+    .form_item_photo {
+        margin: 10px 0 0 10px;
+    }
+
+    .form_item_photo label {
+        margin: 10px 0 0 20px;
+
+    }
+
+    input {
+        padding: 5px 30px;
+    }
+
+    .form_item_date {
+        padding: 5px 60px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .form_submit {
+        margin: 20px auto;
+        margin-right: 5px;
+        padding: 5px 30px;
+        background-color: lightblue;
+        border: 1px solid lightslategray;
+    }
+    .div {
+        width: 300px;
+        height: 500px;
+        border: 2px solid black;
+    }
     .choice{
         margin: 30px 0;
     }
@@ -37,43 +155,34 @@
     select{
         margin-right: 40px;
     }
-    form{
-        margin: 0 auto;
-        max-width: 300px;
-    }
-    .form_inner{
+    /* books */
+    .books_item{
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        width: 200px;
-        margin-bottom: 100px;
-
+        margin: 30px 0;
     }
-    .form_item{
-        margin: 10px 0 0 30px;
-    }
-    .form_item_photo{
-        margin: 10px 0 0 10px;
-    }
-    .form_item_photo label {
-        margin: 10px 0 0 20px;
-
-    }
-    input{
-        padding: 5px 30px;
-    }
-    .form_item_date{
-        padding: 5px 60px;
-    }
-    textarea{
-        resize: none;
-    }
-    .form_submit{
+    .book{
+        border: 1px solid lightgray;
+        width: 500px;
         margin: 20px auto;
-        margin-right: 5px;
-        padding: 5px 30px;
-        background-color: lightblue;
-        border: 1px solid lightslategray;
+        padding: 20px 30px;
+
+    }
+    .date{
+        text-align: right;
+    }
+    .books_content{
+        width: 50%;
+    }
+    img{
+        width: 230px;
+        margin-left: 100px;
+    }
+    .book_text{
+        margin-top: 20px;
+    }
+    .book_data{
+        margin-top: 20px;
     }
 </style>

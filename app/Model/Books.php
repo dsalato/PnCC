@@ -21,6 +21,7 @@ class Books extends Model
         'count',
         'photo',
     ];
+
     protected static function booted()
     {
         static::created(function ($books) {

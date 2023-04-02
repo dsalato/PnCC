@@ -16,7 +16,7 @@
                 <?php
                 if (!app()->auth::check()):
                     ?>
-                    <a class="header_a" href="<?= app()->route->getUrl('/books') ?>">Просмотр книг</a>
+                    <a class="header_a" href="<?= app()->route->getUrl('/listBook') ?>">Просмотр книг</a>
                     <a class="header_a" href="<?= app()->route->getUrl('/login') ?>">Войти</a>
                 <?php
                 else:
@@ -27,6 +27,7 @@
                     else:
                     ?>
                         <a class="header_a" href="<?= app()->route->getUrl('/addreader') ?>">Добавить читателя</a>
+                        <a class="header_a" href="<?= app()->route->getUrl('/adduserbook') ?>">Добавить книгу читателю</a>
                     <?php
                     endif;
                     ?>
