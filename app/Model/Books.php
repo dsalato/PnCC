@@ -11,7 +11,7 @@ class Books extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public $table = 'Books';
+    public $table = 'books';
     protected $fillable = [
         'id',
         'name',
@@ -21,14 +21,6 @@ class Books extends Model
         'count',
         'photo',
     ];
-
-    protected static function booted()
-    {
-        static::created(function ($books) {
-            $books->save();
-        });
-    }
-
 }
 
 

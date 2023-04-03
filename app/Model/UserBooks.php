@@ -2,18 +2,17 @@
 
 namespace Model;
 
-use Controller\Book;
-use Controller\Reader;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class UserBooks extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public $table = 'UserBooks';
+    public $table = 'userbooks';
     protected $fillable = [
         'id',
         'library_card_id',

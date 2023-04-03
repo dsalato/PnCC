@@ -32,14 +32,11 @@
                 ?>
                 <a href="<?= app()->route->getUrl("/profile?id=$reader->id") ?>"><div class="book">
                     <div class="books_content">
-                        <p><?= $reader->first_name ?> <?= $reader->last_name ?></p>
+                        <p>Имя пользователя: <?= $reader->first_name ?> <?= $reader->last_name ?></p>
                         <p>Номер читательского билета: <?= $reader->id ?></p>
-                        <p><?= $reader->number ?></p>
+                        <p>Номер телефона: <?= $reader->number ?></p>
                     </div>
-                    <div class="date">
-                        <p>Дата выдачи <?= $date[0]->date_of_issue ?></p>
-                        <p>Дата сдачи <?= $date[0]->delivery_date ?></p>
-                    </div>
+
                 </div></a>
                     <?php
                 }
@@ -73,11 +70,9 @@
         padding: 20px 30px;
 
     }
-    .date{
-        text-align: right;
-    }
+
     .books_content{
-        width: 50%;
+        width: 100%;
     }
     img{
         width: 230px;

@@ -22,8 +22,7 @@ class Reader{
     {
         $reader = Readers::all();
         $books = Books::all();
-        $date = Readers::find(9)->readBook;
-        return (new View())->render('site.readers', ['readers' => $reader, 'date' => $date, 'books' => $books,]);
+        return (new View())->render('site.readers', ['readers' => $reader,  'books' => $books,]);
     }
 
     public function profileReader (Request $request): string

@@ -33,6 +33,13 @@
                 <div class="books_item">
                     <div class="div"></div>
                     <div class="books_content">
+                <?php
+                if (app()->auth::check()):
+                    ?>
+                        <a href="<?= app()->route->getUrl("/editbook?id=$book->id") ?>">Редактировать</a>
+                <?php
+                endif;
+                ?>
                         <p><?= $book->name ?></p>
                         <p><?= $book->author ?></p>
                         <p><?= $book->year ?></p>
@@ -80,9 +87,16 @@
 
 
     .books_content {
+        position: relative;
         width: 50%;
     }
-
+    .books_content a{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        color: lightcoral;
+    }
     img {
         width: 230px;
         margin-left: 100px;

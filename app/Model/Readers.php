@@ -11,7 +11,7 @@ class Readers extends Model
     use HasFactory;
 
     public $timestamps = false;
-    public $table = 'Readers';
+    public $table = 'readers';
     protected $fillable = [
         'id',
         'first_name',
