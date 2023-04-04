@@ -21,6 +21,8 @@ class Books extends Model
         'count',
         'photo',
     ];
+
+
 }
 
 

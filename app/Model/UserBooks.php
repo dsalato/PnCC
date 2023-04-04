@@ -31,6 +31,15 @@ class UserBooks extends Model
         );
     }
 
+    public function reader():BelongsTo
+    {
+        return $this->BelongsTo(
+            Readers::class,
+            'library_card_id',
+            'id',
+        );
+    }
+
     protected static function booted()
     {
         static::created(function ($userBook) {

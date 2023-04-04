@@ -4,11 +4,13 @@
             <h3>Добавление пользователя</h3>
         </div>
     </div>
+    <p class="Error"><?= $message ?? ''; ?></p>
 
     <div class="forms">
         <div class="container">
             <form action="" method="post">
                 <div class="form_inner">
+                    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                     <div class="form_item">
                         <label for="first_name">Имя</label>
                         <input id="first_name" name="first_name" type="text">
@@ -41,6 +43,12 @@
 <style>
     .choice{
         margin: 30px 0;
+    }
+    .Error{
+        margin-bottom: 15px;
+        text-align: center;
+        color: red;
+
     }
     h3{
         text-align: center;

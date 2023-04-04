@@ -4,20 +4,23 @@
         <?php
         if (app()->auth::check()):
             ?>
+        <form method="post">
             <div class="choice_inner">
-
-                <select name="readers">
+                <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+                <select name="library_card_id">
                     <?php
                     foreach ($readers as $reader) {
                     ?>
-                    <option value="<?= $reader->last_name?>"><?= $reader->last_name?></option>
+                    <option value="<?= $reader->id?>"><?= $reader->last_name?></option>
                         <?php
                     }
                     ?>
                 </select>
 
                 <p>Выбор читателя</p>
+                <button>Найти</button>
             </div>
+        </form>
         <?php
         endif;
         ?>
@@ -28,7 +31,7 @@
     <div class="container">
         <div class="books_inner">
             <?php
-            foreach ($books as $book) {
+            foreach ($books as $key=>$book) {
                 ?>
                 <div class="books_item">
                     <div class="div"></div>
@@ -44,6 +47,14 @@
                         <p><?= $book->author ?></p>
                         <p><?= $book->year ?></p>
                         <p class="book_text"><?= $book->description ?></p>
+                        <?php
+                        if(!is_null($bookq)):
+                            ?>
+                        <p class="book_data">Дата выдачи: <?= $bookq[$key]->date_of_issue?></p>
+                        <p class="book_data">Дата сдачи: <?= $bookq[$key]->delivery_date?></p>
+                        <?php
+                        endif;
+                        ?>
                     </div>
                 </div>
                 <?php
@@ -54,12 +65,20 @@
 </div>
 
 <style>
+    .book_data{
+        margin-top: 20px;
+    }
     .div {
         width: 300px;
         height: 500px;
         border: 2px solid black;
     }
-
+    button{
+        padding: 3px 30px;
+        margin-left: 40px;
+        background-color: lightblue;
+        border: 1px solid darkslategrey;
+    }
     .choice{
         margin: 30px 0;
     }
