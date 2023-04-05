@@ -7,6 +7,7 @@ Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout'])->middleware('auth');
 
 Route::add(['GET', 'POST'], '/books', [Controller\Book::class, 'books']);
+Route::add(['GET', 'POST'], '/bookReting', [Controller\Book::class, 'bookRating']);
 Route::add(['GET', 'POST'], '/addbook', [Controller\Book::class, 'addBook'])->middleware('auth');
 Route::add(['GET', 'POST'], '/editbook', [Controller\Book::class, 'editBook'])->middleware('auth');
 
