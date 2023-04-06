@@ -16,11 +16,14 @@ class Site
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'name' => ['required'],
-                'login' => ['required', 'unique:users,login'],
-                'password' => ['required']
+                'name' => ['required', 'cyrillic'],
+                'login' => ['required', 'unique:users,login', 'latinNumber'],
+                'password' => ['required', 'latinNumber']
             ], [
                 'required' => 'Поле :field пусто',
+                'cyrillic' => 'Поле :field должно содержать кириллицу',
+                'number' => 'Поле :field должно состоять из цифр',
+                'latinNumber' => 'Поле :field должно состоять из латинских букв и цифр',
                 'unique' => 'Поле :field должно быть уникально'
             ]);
 

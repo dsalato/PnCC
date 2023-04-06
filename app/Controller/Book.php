@@ -43,23 +43,29 @@ class Book{
         if ($request->method === 'POST'){
 
             $validator = new Validator($request->all(), [
-                'name' => ['required'],
-                'author' => ['required'],
-                'year' => ['required'],
-                'description' => ['required'],
-                'count' => ['required'],
-
+                'name' => ['required','cyrillic'],
+                'author' => ['required', 'cyrillic'],
+                'year' => ['required', 'number'],
+                'description' => ['required', 'cyrillic'],
+                'count' => ['required', 'number'],
+                'photo'=> ['required', 'image'],
             ], [
                 'required' => 'Поле :field пусто',
+                'cyrillic' => 'Поле :field должно содержать кириллицу',
+                'number' => 'Поле :field должно состоять из цифр',
+                'image' => 'Поле :field должно состоять из картинки png или jpeg или webp',
             ]);
 
             if($validator->fails()){
                 return new View('forms.addBook',
                     ['message' => $validator->errors()]);
-            }
-            if (Books::create($request->all())){
+            }else{
+                $project = Books::create($request->all());
+                $project->photo($_FILES['photo']);
+                $project->save();
                 app()->route->redirect('/books');
             }
+
         }
 
         return new View('forms.addBook');
@@ -70,28 +76,33 @@ class Book{
         $books = Books::where('id', $request->id)->get();
         if ($request->method === 'POST') {
             $validator = new Validator($request->all(), [
-                'name' => ['required'],
-                'author' => ['required'],
-                'year' => ['required'],
-                'description' => ['required'],
-                'count' => ['required'],
-
+                'name' => ['required','cyrillic'],
+                'author' => ['required', 'cyrillic'],
+                'year' => ['required', 'number'],
+                'description' => ['required', 'cyrillic'],
+                'count' => ['required', 'number'],
+                'photo'=> ['required', 'image'],
             ], [
                 'required' => 'Поле :field пусто',
+                'cyrillic' => 'Поле :field должно содержать кириллицу',
+                'number' => 'Поле :field должно состоять из цифр',
+                'image' => 'Поле :field должно состоять из картинки png или jpeg или webp',
             ]);
 
             if($validator->fails()){
                 return new View('forms.editBook',
                     ['message' => $validator->errors(), 'books' => $books]);
-            }
+            } else {
 
-            $books[0]->count = $request->count;
-            $books[0]->author = $request->author;
-            $books[0]->name = $request->name;
-            $books[0]->year = $request->year;
-            $books[0]->description = $request->description;
-            $books[0]->save();
-            app()->route->redirect('/books');
+                $books[0]->count = $request->count;
+                $books[0]->author = $request->author;
+                $books[0]->name = $request->name;
+                $books[0]->year = $request->year;
+                $books[0]->description = $request->description;
+                $books[0]->photo($_FILES['photo']);
+                $books[0]->save();
+                app()->route->redirect('/books');
+            }
         }
         return (new View())->render('forms.editBook', [ 'books' => $books ]);
 
