@@ -45,14 +45,16 @@ class Book{
             $validator = new Validator($request->all(), [
                 'name' => ['required','cyrillic'],
                 'author' => ['required', 'cyrillic'],
-                'year' => ['required', 'number'],
-                'description' => ['required', 'cyrillic'],
+                'year' => ['required', 'number' , 'year'],
+                'description' => ['required', 'all'],
                 'count' => ['required', 'number'],
                 'photo'=> ['required', 'image'],
             ], [
                 'required' => 'Поле :field пусто',
-                'cyrillic' => 'Поле :field должно содержать кириллицу',
+                'cyrillic' => 'Поле :field может состоять из кириллицы и латиницы',
+                'all' => 'Поле :field может состоять из кириллицы, латиницы и цифр',
                 'number' => 'Поле :field должно состоять из цифр',
+                'year' => 'Поле :field должно содержать не более 4 цифр',
                 'image' => 'Поле :field должно состоять из картинки png или jpeg или webp',
             ]);
 
@@ -75,17 +77,20 @@ class Book{
     {
         $books = Books::where('id', $request->id)->get();
         if ($request->method === 'POST') {
+
             $validator = new Validator($request->all(), [
                 'name' => ['required','cyrillic'],
                 'author' => ['required', 'cyrillic'],
-                'year' => ['required', 'number'],
-                'description' => ['required', 'cyrillic'],
+                'year' => ['required', 'number' , 'year'],
+                'description' => ['required', 'all'],
                 'count' => ['required', 'number'],
                 'photo'=> ['required', 'image'],
             ], [
                 'required' => 'Поле :field пусто',
-                'cyrillic' => 'Поле :field должно содержать кириллицу',
+                'cyrillic' => 'Поле :field может состоять из кириллицы и латиницы',
+                'all' => 'Поле :field может состоять из кириллицы, латиницы и цифр',
                 'number' => 'Поле :field должно состоять из цифр',
+                'year' => 'Поле :field должно содержать не более 4 цифр',
                 'image' => 'Поле :field должно состоять из картинки png или jpeg или webp',
             ]);
 

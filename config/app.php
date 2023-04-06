@@ -10,7 +10,9 @@ return [
         'unique' => \Validator\UniqueValidator::class,
         'number' => \Validator\NumbersValidator::class,
         'cyrillic' => \Validator\CyrillicValidator::class,
+        'all' => \Validator\AllValidator::class,
         'image' => \Validator\ImageValidator::class,
+        'year' => \Validator\YearValidator::class,
         'latinNumber' => \Validator\LatinNumberValidator::class,
     ],
     'routeAppMiddleware' => [

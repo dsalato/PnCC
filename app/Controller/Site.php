@@ -21,9 +21,9 @@ class Site
                 'password' => ['required', 'latinNumber']
             ], [
                 'required' => 'Поле :field пусто',
-                'cyrillic' => 'Поле :field должно содержать кириллицу',
+                'cyrillic' => 'Поле :field может состоять из кириллицы и латиницы',
                 'number' => 'Поле :field должно состоять из цифр',
-                'latinNumber' => 'Поле :field должно состоять из латинских букв и цифр',
+                'latinNumber' => 'Поле :field должно состоять из латинских букв или цифр',
                 'unique' => 'Поле :field должно быть уникально'
             ]);
 
