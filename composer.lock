@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddebf42ddcc55655e61b703057a3a825",
+    "content-hash": "100acf5f5045ac326dac490a16bb8946",
     "packages": [
         {
             "name": "brick/math",
@@ -151,6 +151,50 @@
                 }
             ],
             "time": "2023-01-15T14:40:19+00:00"
+        },
+        {
+            "name": "dsalato/session",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dsalato/Package.git",
+                "reference": "c65d66bfa9002e681d6833b1e7edfc2fe7c4e061"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dsalato/Package/zipball/c65d66bfa9002e681d6833b1e7edfc2fe7c4e061",
+                "reference": "c65d66bfa9002e681d6833b1e7edfc2fe7c4e061",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 | ^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Session\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "dsalato",
+                    "email": "d.salato@mail.ru"
+                }
+            ],
+            "description": "Module for working with arrays",
+            "support": {
+                "issues": "https://github.com/dsalato/Package/issues",
+                "source": "https://github.com/dsalato/Package/tree/master"
+            },
+            "time": "2023-04-07T02:52:13+00:00"
         },
         {
             "name": "illuminate/bus",
@@ -629,12 +673,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "17bc477bcee3bcc70129b8dd7064cb9de8405ee9"
+                "reference": "86ffa2174119d86c6c8c3e76575dcb6c5dea7f7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/17bc477bcee3bcc70129b8dd7064cb9de8405ee9",
-                "reference": "17bc477bcee3bcc70129b8dd7064cb9de8405ee9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/86ffa2174119d86c6c8c3e76575dcb6c5dea7f7d",
+                "reference": "86ffa2174119d86c6c8c3e76575dcb6c5dea7f7d",
                 "shasum": ""
             },
             "require": {
@@ -692,7 +736,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-04-02T16:23:05+00:00"
+            "time": "2023-04-06T18:21:36+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1143,12 +1187,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "ae58728630949fa443d94c394198bbf3d7bc7716"
+                "reference": "4eaba3573adcba5fec6589b806378a35cdcac9fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/ae58728630949fa443d94c394198bbf3d7bc7716",
-                "reference": "ae58728630949fa443d94c394198bbf3d7bc7716",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/4eaba3573adcba5fec6589b806378a35cdcac9fc",
+                "reference": "4eaba3573adcba5fec6589b806378a35cdcac9fc",
                 "shasum": ""
             },
             "require": {
@@ -1235,7 +1279,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-31T09:18:46+00:00"
+            "time": "2023-04-04T08:45:02+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -1400,12 +1444,14 @@
     "stability-flags": {
         "illuminate/database": 20,
         "illuminate/events": 20,
-        "nikic/fast-route": 20
+        "nikic/fast-route": 20,
+        "dsalato/session": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4 | ^8.0"
+        "php": "^7.4 | ^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
